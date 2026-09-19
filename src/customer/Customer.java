@@ -1,17 +1,31 @@
 package customer;
-import person.Person;
+
 import java.util.*;
+
+//Super Class 
+import person.Person;
+
+//Interfaces 
 import account.AccountSecurity;
 import account.AccountBenefits;
-import account.AccountContactUpdater;
-import account.AccountStatus;
-import account.CardType;
+
+//Functional Interface
 import account.PenaltyCalculator;
+import account.AccountContactUpdater;
+
+//Enums
+import account.CardType;
 import account.AccountType;
+import account.AccountStatus;
 
 public class Customer extends Person implements AccountSecurity, AccountBenefits,PenaltyCalculator{
       
-  //Instance variables
+  //=================================================================
+
+  // =====================
+  // Instance variables
+  // =====================
+
   private String branchName;
   private String nomineeName;
   private String kycVerified;
@@ -22,28 +36,20 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
   private int currentPin;
   private int rewardPoints;
   private int branchPincode;
+
+  //Encapsulation 
+  private double balance;
+  private long accountNumber;
   private double minimumBalancePenalty;
 
   //construtor 
   private final int customerId;
-      
-  //Encapsulation 
-  private double balance;
-  private long accountNumber;
-  
-  // private String customerName;
-      
-  //Instance variable for String Builder
-  // String email;
-  // String address;
-  // String phoneNumber;
 
   //Enum
   private AccountType accountType;
   private AccountStatus accountStatus;
 
   //Instance variables using Array
-    
   private double[] monthlyDeposits;
   private double[][] monthlyTransactions;
       
@@ -62,40 +68,91 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
   "December  : "
   };
 
-  //Static variables
+  // =======================
+  // Static variables
+  // =======================
+
   protected static final String bankBranch = "Kavi Bank ";
   protected static String midLine = "-----------------------------------------";
   protected static String endLine = "**********************************************************";
 
-  //Static block
+  //=================================================================
+
+  // =======================
+  // Static block
+  // =======================
   static {  
-  System.out.println("Loading Bank Customer Management System...");
+    if ("CUSTOMER_MANAGEMENT".equals(System.getProperty("app.mode"))) {
+      System.out.println("Loading Bank Customer Management System...");
+    }
   }
 
-  //Helper Method for default customer constructor 
+  // =======================
+  // Helper Method 
+  // =======================
   private int generateCustomerId(){
   Random random = new Random();
   return random.nextInt(900000) + 100000;
   }
 
-  //constructor
+  // =======================
+  // Constructors
+  // =======================
+  
   public Customer(){
+    //Helper
     customerId = generateCustomerId();
   }
 
-  public Customer(String customerName ,String phoneNumber,String email,String address,long accountNumber,double balance,int currentPin){
-    super(customerName,phoneNumber,email,address);
+  public Customer(
+    String customerName,
+    String phoneNumber,
+    String email,
+    String address,
+    long accountNumber,
+    double balance,
+    int currentPin){
+
+    super(
+      customerName,
+      phoneNumber,
+      email,
+      address
+    );
+    
+    //Helper
     customerId =  generateCustomerId(); 
+
     this.accountNumber = accountNumber;
     this.balance = balance;
     this.currentPin = currentPin;
   } 
 
-  public Customer(String customerName ,String phoneNumber,String email,String address,long accountNumber,double balance
-  ,String branchName,int branchPincode,AccountType accountType,String nomineeName,String relationship,
-  String kycVerified,String proofDocument){
-    super(customerName,phoneNumber,email,address);
+  public Customer(
+    String customerName,
+    String phoneNumber,
+    String email,
+    String address,
+    long accountNumber,
+    double balance,
+    String branchName,
+    int branchPincode,
+    AccountType accountType,
+    String nomineeName,
+    String relationship,
+    String kycVerified,
+    String proofDocument){
+
+    super(
+      customerName,
+      phoneNumber,
+      email,
+      address
+    );
+
+    //Helper
     customerId =  generateCustomerId(); 
+
     this.accountNumber = accountNumber;
     this.balance = balance;
     this.branchName = branchName;
@@ -107,14 +164,22 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     this.proofDocument = proofDocument;
   } 
 
+  //=================================================================
+
+  // =======================
   // Static Method
+  // =======================
+
   public static void welcome(){
     System.out.println(endLine);
     System.out.println(" Welcome to " + bankBranch);
     System.out.println(endLine);
   }
 
-  //Instance Method
+  // =======================
+  // Instance Method
+  // =======================
+
   public void customerDetail(){
     System.out.println("Customer Account Detail \n" + endLine);
     System.out.println(
@@ -134,7 +199,10 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     );
   }
 
-  //Instance Method Using String Builder
+  // ====================================
+  // Instance Method Using String Builder
+  // ====================================
+
   public void customerContactReport(){
     StringBuilder sb = new StringBuilder();
 
@@ -164,30 +232,22 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     System.out.println(sb.toString());
     System.out.println(endLine);
   } 
+  //=================================================================
+
+  // =======================
+  // Array Processing
+  // =======================
 
   public void  displayMonthlyDeposits(){
-  System.out.println("Customer Monthly Deposit Report \n"+ "Customer Name : " + getName() + "\n" + endLine);
-    for(int i=0;i<monthlyDeposits.length;i++){
-      System.out.println(months[i] + monthlyDeposits[i]);
-    }
 
-  System.out.println(endLine);
+    System.out.println("Customer Monthly Deposit Report \n"+ "Customer Name : " + getName() + "\n" + endLine);
+      for(int i=0;i<monthlyDeposits.length;i++){
+        System.out.println(months[i] + monthlyDeposits[i]);
+      }
+
+    System.out.println(endLine);
+
   }
-
-  // // Example of array using as parameter in a method
-  // public void  displayMonthlyDeposits(double[] deposits){
-  // System.out.println("Customer Monthly Deposit Report \n"+ "Customer Name : " + customerName + "\n" + longLine);
-  //   for(int i=0;i<deposits.length;i++){
-  //     System.out.println(months[i] + deposits[i]);
-  //   }
-
-  // System.out.println(longLine);
-  // }
-
-  // // Example of array using return type method
-  // public double[] getMonthlyDeposits() {
-  // return monthlyDeposits;
-  // }
 
   public void displayMonthlyTransactions(){
 
@@ -213,7 +273,12 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     }
   }
 
-  //Abstract Class Method
+  //=================================================================
+
+  // ======================================
+  // Abstract Class Method from super class
+  // ======================================
+
   @Override
   public void displayPersonInfo(){
   System.out.println
@@ -223,12 +288,11 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     "Address      : " + getAddress());
   }
 
-  //setters
-  // public void setCustomerName(String customerName){
-  //   this.customerName = customerName;
-  // }
-
   
+  // =======================
+  // Setters
+  // =======================
+
   public void setAccountStatus(AccountStatus accountStatus){
   this.accountStatus = accountStatus;
   }
@@ -253,10 +317,9 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
   this.monthlyTransactions = monthlyTransactions;
   }
 
-  //getters
-  // public String getCustomerName(){
-  // return customerName;
-  // }
+  // =======================
+  // Getters
+  // =======================
 
   public double getBalance(){
     return balance;
@@ -286,8 +349,12 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     return monthlyTransactions;
   }
 
+  //=================================================================
 
-  //Method using parameter
+  // =======================
+  // Method using parameter
+  // =======================
+
   public void updateBranch(String newBranchName){
   branchName = newBranchName;
   }
@@ -305,16 +372,14 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
   kycVerified = newStatus; 
   }
 
-  //Method overloading
+  // =====================
+  // Method overloading
+  // =====================
+
   public void updateBranch(String newBranchName ,int newBranchPincode){
   branchName = newBranchName;
   branchPincode = newBranchPincode;
   }
-
-  // public void updateAccountType(String newAccountType, double newMinimumBalance){
-  // accountType = newAccountType;
-  // minimumBalance = newMinimumBalance;
-  // }
 
   public void updateNominee(String newNomineeName , String newRelationship){
   nomineeName = newNomineeName;
@@ -325,8 +390,12 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
   kycVerified = newStatus; 
   proofDocument = newProofDocument;
   }       
+  //=================================================================
 
-  //non-static inner class
+  // =======================
+  // Non-Static Inner Class
+  // =======================
+
   public class BankCard{
   
     private CardType cardType;
@@ -355,7 +424,10 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     }
   }
 
-  //Static Inner Class
+  // =====================
+  // Static Inner Class
+  // =====================
+
   public static class Locker {
 
     private int lockerNumber;
@@ -384,12 +456,20 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     }
   }
 
-  //Anonymous Inner Class
+  // =======================
+  // Anonymous Inner Class  
+  // =======================
+
   public void validateAccount() {
   System.out.println("Account validation Completed.");
   }
 
-  //Interface abstract methods for single class implementation
+  //=================================================================
+
+  // ==========================================
+  // Interface for single class implementation
+  // ==========================================
+
   @Override
   public void verifyIdentity(){
 
@@ -450,7 +530,10 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     System.out.println(endLine);
   }
 
-  //Interface abstract methods for multiplee class implementation
+  // ============================================
+  // Interface for multiple class implementation
+  // ============================================
+
   @Override
   public void calculateInterest(){
 
@@ -504,7 +587,12 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     }
   }
 
-  //Functional Interface -> means it contains only one method 
+  //=================================================================
+
+  // =====================
+  // Functional Interface -> means it contains only one method 
+  // =====================
+
   @Override
   public void minimumBalancePenaltyCalculator(){
     switch(accountType){
@@ -560,44 +648,10 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     }
   }
 
-  // //Functinal Interface using Lambda expression 
-  // public void contactUpdater(String newPhoneNumber,String newEmail){
+  // ===================
+  // lambda expression  -> Using Functional Interface 
+  // ===================
 
-  //   if (!newPhoneNumber.matches("[6-9][0-9]{9}")) {
-  //     System.out.println("Invalid phone number.");
-  //     return;
-  //   }
-    
-  //   if (newEmail == null || newEmail.isBlank()){
-  //     System.out.println("Email cannot be empty.");
-  //     return;
-  //   }
-
-  //   if (!newEmail.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")){
-  //     System.out.println("Invalid email address.");
-  //     return;
-  //   }
-
-  //   if (newPhoneNumber.equals(getPhoneNumber())){
-  //     System.out.println( "New phone number is the same as the current phone number." );
-  //     return;
-  //   }
-
-  //   if (newEmail.equalsIgnoreCase(getEmail())){
-  //     System.out.println("New email is the same as the current email.");
-  //     return;
-  //   }
-
-  //   setPhoneNumber(newPhoneNumber);
-  //   setEmail(newEmail);
-
-  //   System.out.println("Phone number updated successfully.");
-  //   System.out.println("Email updated successfully.");
-  //   System.out.println(endLine);
-
-  // 
-      
-  //Functional interface using lambda expression
   private AccountContactUpdater contactUpdater = (newPhoneNumber, newEmail) -> {
     
     if (!newPhoneNumber.matches("[6-9][0-9]{9}")) {
@@ -631,7 +685,9 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
     System.out.println("Phone number updated successfully.");
     System.out.println("Email updated successfully.");
     System.out.println(endLine);
-    };
+  };
+
+  //=================================================================
 
   public AccountContactUpdater getContactUpdater() {
     return contactUpdater;

@@ -2,5 +2,5 @@ package ATM;
 
 //abstraction
 public abstract class ATMOperation {
-public abstract void performOperation();
+public abstract void performOperation() throws InvalidAmountException;
 }

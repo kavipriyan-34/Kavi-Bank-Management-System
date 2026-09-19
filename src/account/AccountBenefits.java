@@ -1,6 +1,4 @@
 package account;
-
-
 // interface for multiple implementation
 public interface AccountBenefits {
 

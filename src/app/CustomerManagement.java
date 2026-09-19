@@ -23,7 +23,7 @@
       private static void initializeCustomers(){
 
         //Object creation
-        Customer client1 = new Customer("Kevin","9876543210","kevin@gmail.com","Chennai",989824214,10000,5672);
+        Customer client1 = new Customer("Kevin","9876543210","kevin@gmail.com","Chennai",989824214,12000,8421);
         Customer client2 = new Customer("Rick","7728261289","rick@gmail.com","Karur",989824214,15000,3242);
         Customer client3 = new Customer("Ivan","8778276278","ivan@gmail.com","Karur",84937294,20000,2331);
 
@@ -82,9 +82,9 @@
         contactUpdaters[0] = client1.getContactUpdater();
         contactUpdaters[1] = client2.getContactUpdater();
 
-        //Excute the lambda expression
-        contactUpdaters[0].contactUpdater("8877349102","Kevin34@gmail.com");
-        contactUpdaters[1].contactUpdater( "9123456789", "rick45@gmail.com");
+        // //Excute the lambda expression
+        // contactUpdaters[0].contactUpdater("8877349102","Kevin34@gmail.com");
+        // contactUpdaters[1].contactUpdater( "9123456789", "rick45@gmail.com");
         
         // client1.setcustomerName("Kevin");
         // client2.setCustomerName( "Rick");
@@ -289,6 +289,8 @@
       }
 
       public static void main(String [] args){
+        
+        System.setProperty("app.mode", "CUSTOMER_MANAGEMENT");
         
         Customer.welcome();
   

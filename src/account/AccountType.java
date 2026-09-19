@@ -1,5 +1,6 @@
 package account;
 
+//Enum has class
 public enum AccountType {
 
     SAVINGS("Savings",1000),
