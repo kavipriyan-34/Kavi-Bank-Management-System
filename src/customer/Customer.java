@@ -91,8 +91,8 @@ public class Customer extends Person implements AccountSecurity, AccountBenefits
   // Helper Method 
   // =======================
   private int generateCustomerId(){
-  Random random = new Random();
-  return random.nextInt(900000) + 100000;
+    Random random = new Random();
+    return random.nextInt(900000) + 100000;
   }
 
   // =======================

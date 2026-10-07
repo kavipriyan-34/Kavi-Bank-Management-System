@@ -1,5 +1,6 @@
 import java.util.*;
 public class Basic{
+
     public static void main (String []args){
         String name,college;
         int age;
@@ -191,36 +192,4 @@ public class Basic{
     }
 }
 
- // client1.customerDetail();
-    // client1.customerContactReport();
-    // client1.displayMonthlyDeposits();
-    // client1.displayMonthlyTransactions();
-    // client1Card.displayCardDetails();
-    // client1Locker.displayLockerDetails();
-    
-    // client1Security
-    
-    
-    // client2.customerDetail();
-    // client2.customerContactReport();
-    // client2.displayMonthlyDeposits();
-    // client2.displayMonthlyTransactions();
-    // client2Card.displayCardDetails();
-    // client2Locker.displayLockerDetails();
-    // validator.validateAccount();
-    // client2Security.verifyIdentity();
-    // client2Benefits.calculateInterest();
-    // client2Benefits.calculateRewards();
-    // client2Benefits.checkBenefits();
-    
-    // client3.customerDetail();
-    // client3.customerContactReport();
-    // client3.displayMonthlyDeposits(); 
-    // client3.displayMonthlyTransactions();
-    // client3Card.displayCardDetails();
-    // client3Locker.displayLockerDetails();
-    // validator.validateAccount();
-    // client3Security
-    // client3Benefits.calculateInterest();
-    // client3Benefits.calculateRewards();
-    // client3Benefits.checkBenefits();
+

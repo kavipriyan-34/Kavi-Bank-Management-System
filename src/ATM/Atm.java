@@ -384,9 +384,17 @@
                             AccountTransactionType[] transactionMethods = AccountTransactionType.values(); 
 
                             atm.atmMenu();
-                            atm.choice = sc.nextInt();
-                            sc.nextLine();
-                            System.out.println(atm.line);
+                            
+                            try {
+                                atm.choice = sc.nextInt();
+                                sc.nextLine();
+                                System.out.println(atm.line);
+                            } catch (InputMismatchException  e) {
+                                System.out.println("Invalid Input. Please enter a number.");
+                                sc.nextLine();
+                                continue;
+                            }
+                        
 
                             if (atm.choice == 4) {
 
@@ -432,10 +440,6 @@
                         atm.isRunning = false;
                     }
                 }//try and catch with default and cutsom exception    
-                catch(InputMismatchException e){
-                    System.out.println("Invalid Input. Please enter a number.");
-                    sc.nextLine();
-                }
                 catch(NoSuchElementException e){
                     System.out.println("\n" + "User Terminated the Window" + "\n" + atm.line);
                     atm.isRunning = false;
